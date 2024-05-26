@@ -16,10 +16,11 @@ class UnicodeFileToHtmlTextConverter:
     def __init__(self, full_filename_with_path: str) -> None:
         self.file_reader = FileReader(full_filename_with_path)
 
-    def convert_to_html(self):
-        f = open(self.full_filename_with_path, "r")
+    def convert_to_html(self) -> str:
+        file_content = self.file_reader.read()
+
         html = ""
-        for line in f:
+        for line in file_content:
             line = line.rstrip()
             html += html_converter.escape(line, quote=True)
             html += "<br />"
