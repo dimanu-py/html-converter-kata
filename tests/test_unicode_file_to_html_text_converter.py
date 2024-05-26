@@ -33,7 +33,8 @@ class TestUnicodeFileToHtmlTextConverter:
 
     @pytest.mark.parametrize(
         "mocked_content, expected_html",
-        [('"line1"', "&quot;line1&quot;<br />"), ("10 < 15", "10 &lt; 15<br />"), ("15 > 10", "15 &gt; 10<br />")]
+        [('"line1"', "&quot;line1&quot;<br />"), ("10 < 15", "10 &lt; 15<br />"), ("15 > 10", "15 &gt; 10<br />"),
+         ("Cut & Paste", "Cut &amp; Paste<br />")]
     )
     def test_special_characters_are_escaped(self, mocker, mocked_content, expected_html):
         file_path = "dummy_path.txt"
