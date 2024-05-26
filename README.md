@@ -83,6 +83,16 @@ or
 poetry run pytest
 ```
 
+## Learnings
+
+### UnicodeFileToHtmlTextConverter
+
+- The Single Responsibility principle was not being followed. The class was responsible for reading a file and converting it to HTML, it had
+  more than one reason to change.
+- We've learned how to use Approval Tests to be able to refactor the code in safe steps without being completely sure of the behavior of the
+  class.
+- We've used Mocks to test the behavior of the class decoupled from the file system once we've refactored
+
 ### Visit my GitHub profile to see all solved katas 🚀
 
 [![Web](https://img.shields.io/badge/GitHub-Dimanu.py-14a1f0?style=for-the-badge&logo=github&logoColor=white&labelColor=101010)](https://github.com/dimanu-py/code-katas)
