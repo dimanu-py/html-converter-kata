@@ -43,4 +43,3 @@ class TestUnicodeFileToHtmlTextConverter:
         converted_text = converter.convert_to_html()
 
         assert converted_text == expected_html
-
