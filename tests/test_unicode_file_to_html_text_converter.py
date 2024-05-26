@@ -30,3 +30,17 @@ class TestUnicodeFileToHtmlTextConverter:
         converted_text = converter.convert_to_html()
 
         assert converted_text == expected_html
+
+    @pytest.mark.parametrize(
+        "mocked_content, expected_html",
+        [('"line1"', "&quot;line1&quot;<br />"), ("10 < 15", "10 &lt; 15<br />"), ("15 > 10", "15 &gt; 10<br />")]
+    )
+    def test_special_characters_are_escaped(self, mocker, mocked_content, expected_html):
+        file_path = "dummy_path.txt"
+        mocker.patch("html_converter_kata.unicode_file_to_html_text_converter.FileReader.read", return_value=[mocked_content])
+        converter = UnicodeFileToHtmlTextConverter(file_path)
+
+        converted_text = converter.convert_to_html()
+
+        assert converted_text == expected_html
+
