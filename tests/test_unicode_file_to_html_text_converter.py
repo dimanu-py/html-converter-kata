@@ -44,3 +44,12 @@ class TestUnicodeFileToHtmlTextConverter:
         converted_text = converter.convert_to_html()
 
         assert converted_text == expected_html
+
+    def test_empty_file_is_not_processed(self, mocker):
+        file_path = "dummy_path.txt"
+        mocker.patch("html_converter_kata.unicode_file_to_html_text_converter.FileReader.read", return_value=[])
+        converter = UnicodeFileToHtmlTextConverter(file_path)
+
+        converted_text = converter.convert_to_html()
+
+        assert converted_text == ""
